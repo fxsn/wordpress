@@ -18,6 +18,18 @@
  * @package WordPress
  */
 
+/** CUSTOM CONFIG */
+/** MAKE WP WORK WITH OPENSHIFT IMAGESTREAMS */
+define( 'FORCE_SSL_ADMIN', true );
+
+if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false)
+$_SERVER['HTTPS']='on';
+
+define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
+define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+/** END CUSTOM */
+
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'database_name_here' );
